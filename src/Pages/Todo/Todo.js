@@ -1,10 +1,13 @@
 import React, { useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { loadTodos } from '../../Redux/TodoActions/todoActions';
 
 export default function Todo() {
   const dispatch = useDispatch();
   const items = useSelector((s) => s.todo.items);
   const filter = useSelector((s) => s.todo.filter);
+  const loading = useSelector((s) => s.todo.loading);
+  const error = useSelector((s) => s.todo.error);
 
   const [text, setText] = useState('');
   const [editingId, setEditingId] = useState(null);
@@ -52,6 +55,14 @@ export default function Todo() {
         />
         <button onClick={handleAdd}>Add</button>
       </div>
+
+      <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
+        <button onClick={() => dispatch(loadTodos())}>Load via Thunk</button>
+        <button onClick={() => dispatch({ type: 'LOAD_TODOS_SAGA' })}>Load via Saga</button>
+      </div>
+
+      {loading && <p>Loading todos...</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
 
       <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
         <button onClick={() => dispatch({ type: 'SET_TODO_FILTER', payload: 'all' })} disabled={filter === 'all'}>

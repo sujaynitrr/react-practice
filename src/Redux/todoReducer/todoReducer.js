@@ -1,10 +1,21 @@
 const initialState = {
-  items: [], // {id, text, completed}
-  filter: 'all', // 'all' | 'completed' | 'active'
+  items: [],
+  filter: 'all',
+  loading: false,
+  error: null,
 };
 
 export default function todoReducer(state = initialState, action) {
   switch (action.type) {
+    case 'LOAD_TODOS_REQUEST': {
+      return { ...state, loading: true, error: null };
+    }
+    case 'LOAD_TODOS_SUCCESS': {
+      return { ...state, loading: false, items: action.payload, error: null };
+    }
+    case 'LOAD_TODOS_FAILURE': {
+      return { ...state, loading: false, error: action.payload };
+    }
     case 'ADD_TODO': {
       const newItem = {
         id: Math.random(),

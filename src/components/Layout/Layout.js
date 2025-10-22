@@ -22,6 +22,7 @@ const Layout = () => {
             <>
               <NavLink to="/dashboard">Dashboard</NavLink>
               <NavLink to="/counter">Counter</NavLink>
+              <NavLink to="/counter-connected">Counter (Connected)</NavLink>
               <NavLink to="/posts">Posts</NavLink>
               <NavLink to="/todos">Todos</NavLink>
               <NavLink to="/student/add">Students (Add)</NavLink>

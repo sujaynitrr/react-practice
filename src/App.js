@@ -10,6 +10,7 @@ import NotFound from './components/NotFound/NotFound.js';
 import Login from './components/Login/Login.js';
 import PrivateRoute from './Routes/PrivateRoute';
 import Counter from "./components/Counter/Counter.js";
+import CounterConnected from "./components/CounterConnected/CounterConnected.js";
 import Post from "./Pages/Post/Post.js"
 import {Student} from "./Pages/Student/Student.js"
 import StudentList from "./Pages/Student/StudentList.js";
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="dashboard" element={<PrivateRoute><h1>Dashboard Page</h1></PrivateRoute>} />
         <Route path="login" element={<Login />} />
         <Route path="/counter" element={<PrivateRoute><Counter /></PrivateRoute>} />
+        <Route path="/counter-connected" element={<PrivateRoute><CounterConnected /></PrivateRoute>} />
         <Route path="/posts" element={<PrivateRoute><Post/></PrivateRoute>}/>
         <Route path="/todos" element={<PrivateRoute><Todo/></PrivateRoute>} />
         <Route path="/student" element={<Navigate to="/student/add" replace />} />
