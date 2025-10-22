@@ -1,0 +1,41 @@
+import React from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Layout from './components/Layout//Layout.js';
+import Home from './components/Home/Home.js';
+import About from './components/About/About.js';
+import Contact from './components/Contact/Contact.js';
+import User from './components/User/User.js';
+import UserDetails from './components/UserDeatils/UserDetails.js';
+import NotFound from './components/NotFound/NotFound.js';
+import Login from './components/Login/Login.js';
+import PrivateRoute from './Routes/PrivateRoute';
+import Counter from "./components/Counter/Counter.js";
+import Post from "./Pages/Post/Post.js"
+import {Student} from "./Pages/Student/Student.js"
+import StudentList from "./Pages/Student/StudentList.js";
+import Todo from "./Pages/Todo/Todo.js";
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+
+        <Route index element={<Home />} />
+        <Route path="about" element={<About />} />
+        <Route path="contact" element={<Contact />} />  
+        <Route path="user" element={<User />} />
+        <Route path="user/:id" element={<UserDetails />} /> 
+        <Route path="dashboard" element={<PrivateRoute><h1>Dashboard Page</h1></PrivateRoute>} />
+        <Route path="login" element={<Login />} />
+        <Route path="/counter" element={<PrivateRoute><Counter /></PrivateRoute>} />
+        <Route path="/posts" element={<PrivateRoute><Post/></PrivateRoute>}/>
+        <Route path="/todos" element={<PrivateRoute><Todo/></PrivateRoute>} />
+        <Route path="/student" element={<Navigate to="/student/add" replace />} />
+        <Route path="/student/add" element={<PrivateRoute><Student/></PrivateRoute>} />
+        <Route path="/student/add/:id" element={<PrivateRoute><Student/></PrivateRoute>} />
+        <Route path="/student/list" element={<PrivateRoute><StudentList/></PrivateRoute>} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
+  );
+}
