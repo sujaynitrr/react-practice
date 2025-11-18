@@ -15,6 +15,9 @@ import Post from "./Pages/Post/Post.js"
 import {Student} from "./Pages/Student/Student.js"
 import StudentList from "./Pages/Student/StudentList.js";
 import Todo from "./Pages/Todo/Todo.js";
+import TodoList from './components/TodoList/TodoList.js';
+import Reducer from './components/Reducer/Reducer.js';
+import StopWatch from './components/StopWatch/StopWatch.js';
 
 export default function App() {
   return (
@@ -22,6 +25,7 @@ export default function App() {
       <Route path="/" element={<Layout />}>
 
         <Route index element={<Home />} />
+        <Route path="todoList" element={<TodoList/>}/>
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />  
         <Route path="user" element={<User />} />
@@ -36,6 +40,8 @@ export default function App() {
         <Route path="/student/add" element={<PrivateRoute><Student/></PrivateRoute>} />
         <Route path="/student/add/:id" element={<PrivateRoute><Student/></PrivateRoute>} />
         <Route path="/student/list" element={<PrivateRoute><StudentList/></PrivateRoute>} />
+        <Route path="/reducer" element={<Reducer/>}/>
+        <Route path="/stopWatch" element={<StopWatch/>}></Route>
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
