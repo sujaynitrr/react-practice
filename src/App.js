@@ -18,6 +18,7 @@ import Todo from "./Pages/Todo/Todo.js";
 import TodoList from './components/TodoList/TodoList.js';
 import Reducer from './components/Reducer/Reducer.js';
 import StopWatch from './components/StopWatch/StopWatch.js';
+import UserList from './components/UserList/UserList.js';
 
 export default function App() {
   return (
@@ -42,6 +43,7 @@ export default function App() {
         <Route path="/student/list" element={<PrivateRoute><StudentList/></PrivateRoute>} />
         <Route path="/reducer" element={<Reducer/>}/>
         <Route path="/stopWatch" element={<StopWatch/>}></Route>
+        <Route path='/userData' element={<UserList/>}/>
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
