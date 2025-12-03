@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout//Layout.js';
 import Home from './components/Home/Home.js';
@@ -21,6 +21,9 @@ import StopWatch from './components/StopWatch/StopWatch.js';
 import UserList from './components/UserList/UserList.js';
 
 export default function App() {
+
+  const myContext =createContext();
+  const [user,setUser]=useState("Hello");
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
